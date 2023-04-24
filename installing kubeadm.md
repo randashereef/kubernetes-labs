@@ -16,7 +16,7 @@ EOF
 sudo setenforce 0
 sudo sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config
 
-sudo yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
+sudo yum install -y kubelet-1.25.8 kubeadm-1.25.8 kubectl-1.25.8 --disableexcludes=kubernetes
 
 sudo systemctl enable --now kubelet
 ```
@@ -62,8 +62,8 @@ systemctl status containerd
 sudo tee ~/kubeadm.yaml<<EOF
 kind: ClusterConfiguration
 apiVersion: kubeadm.k8s.io/v1beta3
-kubernetesVersion: v1.27.1
-controlPlaneEndpoint: 10.0.2.15
+kubernetesVersion: v1.25.8
+controlPlaneEndpoint: 192.168.124.175
 networking:
   podSubnet: "10.244.0.0/24"
 ---
