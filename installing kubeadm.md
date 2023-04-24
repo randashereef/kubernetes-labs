@@ -1,6 +1,6 @@
 REQUIREMENTS: min 2GB ram, 2 cpu
 
-Installing kubelet, kubectl, kubeadm
+# Installing kubelet, kubectl, kubeadm
 ```
 cat <<EOF | sudo tee /etc/yum.repos.d/kubernetes.repo
 [kubernetes]
@@ -20,7 +20,7 @@ sudo yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
 
 sudo systemctl enable --now kubelet
 ```
-installing containerd
+# installing containerd
 ```
 sudo tee /etc/modules-load.d/k8s.conf <<EOF
 overlay
@@ -57,7 +57,7 @@ sudo systemctl enable containerd
 systemctl status containerd
 
 ```
-Configure kubeadm
+# Configure kubeadm
 ```
 sudo tee ~/kubeadm.yaml<<EOF
 kind: ClusterConfiguration
@@ -72,7 +72,7 @@ apiVersion: kubelet.config.k8s.io/v1beta1
 cgroupDriver: systemd
 EOF
 ```
-Start kubeadm
+# Start kubeadm
 ```
 kubeadm init --config kubeadm.yaml
 ```
